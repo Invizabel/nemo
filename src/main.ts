@@ -1,5 +1,6 @@
 import { device } from "@shared/device";
 import { column, render, type Node } from "@busy-app/busy-lib";
+import { choice, loadValues } from "@shared/settings";
 import manifest from "./appmeta/manifest.json";
 
 // The name the app draws under; the device clears elements by this id.
@@ -7,16 +8,23 @@ const APP = manifest.id;
 
 let stopped = false;
 
+async function loadSettings(): Promise<Settings> {
+  const values = await loadValues();
+  return {
+    fish: String(choice(values, "fish", ["fish", "jellyfish"] as const, "fish")),
+  };
+}
+
 // The frame drawn on every tick. The screen is 72×16, so two short lines are about all that fits.
-function frame(): Node
+function frame(my_path): Node
 {
-  return column({justify: "center", align: "center"}, [{type: "animation", id: "0", width: 72, height: 16, path: "animations/nemo.anim", loop: true}]);
+  return column({justify: "center", align: "center"}, [{type: "animation", id: "0", width: 72, height: 16, path: my_path, loop: true}]);
 }
 
 // Sends one frame to the device.
-async function draw(): Promise<void>
+async function draw(my_path): Promise<void>
 {
-  const elements = render(frame());
+  const elements = render(frame(my_path));
   await device.DisplayDraw({application_name: APP, priority: 50, elements});
 }
 
@@ -25,7 +33,18 @@ function main(): void
 {
   const report = (err: unknown) => console.error(`${APP}: ${err instanceof Error ? err.message : String(err)}`);
 
-  void draw().catch(report);
+  void (async () =>
+  {
+    let settings = await loadSettings();
+    if (settings.fish == "fish")
+    {
+      void draw("animations/nemo.anim")
+    }
+    if (settings.fish == "jellyfish")
+    {
+      void draw("animations/jellyfish.anim")
+    }
+  })().catch(report);
 
   const unbind = listen("input", (event) =>
   {
