@@ -2,7 +2,7 @@
   "name": "nemo",
   "private": true,
   "version": "0.1.0",
-  "description": "Clownfish in an aquarium",
+  "description": "Clownfish and others in an aquarium",
   "author": "invizabel",
   "type": "module",
   "scripts": {

@@ -5,11 +5,12 @@
     "fish": {
       "type": "enum",
       "label": "fish",
-      "description": "Fish or jellyfish?",
+      "description": "What animal?",
       "default": "fish",
       "options": [
         { "value": "fish", "label": "fish" },
-        { "value": "jellyfish", "label": "jellyfish" }
+        { "value": "jellyfish", "label": "jellyfish" },
+        { "value": "dolphin", "label": "dolphin" }
       ]
     }
   }

@@ -11,7 +11,7 @@ let stopped = false;
 async function loadSettings(): Promise<Settings> {
   const values = await loadValues();
   return {
-    fish: String(choice(values, "fish", ["fish", "jellyfish"] as const, "fish")),
+    fish: String(choice(values, "fish", ["fish", "jellyfish", "dolphin"] as const, "fish")),
   };
 }
 
@@ -36,13 +36,20 @@ function main(): void
   void (async () =>
   {
     let settings = await loadSettings();
+
     if (settings.fish == "fish")
     {
       void draw("animations/nemo.anim")
     }
+
     if (settings.fish == "jellyfish")
     {
       void draw("animations/jellyfish.anim")
+    }
+
+    if (settings.fish == "dolphin")
+    {
+      void draw("animations/dolphin.anim")
     }
   })().catch(report);
 

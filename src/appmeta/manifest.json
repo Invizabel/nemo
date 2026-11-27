@@ -2,8 +2,8 @@
   "format_version": 1,
   "id": "app.invizabel.nemo",
   "name": "nemo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "api_version": "27.12.0",
-  "description": "Clownfish in an aquarium",
+  "description": "Clownfish and others in an aquarium",
   "author": "invizabel"
 }

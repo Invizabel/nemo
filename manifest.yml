@@ -11,15 +11,15 @@ sourcecode:
 category: art
 
 # Short description for the app card: plain text, 10 to 120 characters, one line
-short_description: Clownfish swimming in an aquarium
+short_description: Clownfish and others swimming in an aquarium
 
 # Full description for the app page, 50 to 4000 characters
 description: |
-  A relaxing aquarium where a clownfish swims inside its tank
+  A relaxing aquarium where a clownfish and others swims inside an aquarium
 
 # What's new in this version: inline text, 10 to 4000 characters (no file references)
 changelog: |
-  My first commit!
+  More consistent swimming speed! Added Dolphin!
 
 # Screenshots from your app's repository: PNG 72×16 up to 2 MB, 1 to 10. The first one is the card cover
 screenshots:
